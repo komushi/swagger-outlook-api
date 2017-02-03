@@ -119,7 +119,7 @@ $ docker-compose up
 ```
 
 ## 3. AWS ECS deployment option
-[ECS deployment steps]/ecs
+[ECS deployment steps](/ecs)
 
 ## 4. shrinkwrap reference
 [What is npm shrinkwrap and when is it needed](http://javascript.tutorialhorizon.com/2015/03/21/what-is-npm-shrinkwrap-and-when-is-it-needed/)
