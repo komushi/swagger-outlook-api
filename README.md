@@ -1,6 +1,6 @@
-# Skeleton project for Swagger
-## shrinkwrap reference
-[What is npm shrinkwrap and when is it needed](http://javascript.tutorialhorizon.com/2015/03/21/what-is-npm-shrinkwrap-and-when-is-it-needed/)
+# Swagger Outlook API
+
+## A Swagger API application using oauth2 client credentials to access office365 resources
 
 ## 1. Quick start
 ### 1-1. Set up credentials
@@ -118,3 +118,8 @@ start up the service
 $ docker-compose up
 ```
 
+## 3. AWS ECS deployment option
+[ECS deployment steps]/ecs
+
+## 4. shrinkwrap reference
+[What is npm shrinkwrap and when is it needed](http://javascript.tutorialhorizon.com/2015/03/21/what-is-npm-shrinkwrap-and-when-is-it-needed/)
