@@ -1,0 +1,209 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Outlook API
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /mail:
+    # our controller name
+    x-swagger-router-controller: mail
+    get:
+      description: get the mails
+      operationId: getMails
+      parameters:
+        - name: email
+          in: query
+          description: The user email
+          required: true
+          type: string
+      # define the type of response for Success "200" and Error
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetMailsResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /event:
+    # our controller name
+    x-swagger-router-controller: event
+    get:
+      description: get the events
+      operationId: getEvents
+      parameters:
+        - name: email
+          in: query
+          description: The user email
+          required: true
+          type: string
+      # define the type of response for Success "200" and Error
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetEventsResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /event/{id}:
+    # our controller name
+    x-swagger-router-controller: event
+    get:
+      description: get a event
+      operationId: getEvent
+      # define the type of response for Success "200" and Error
+      parameters:
+        - name: email
+          in: query
+          description: The user email
+          required: true
+          type: string
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetEventResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      description: delete a event
+      operationId: delEvent
+      # define the parameters
+      parameters:
+        - name: email
+          in: query
+          description: The user email
+          required: true
+          type: string
+        - name: id
+          description: Event id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"   
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  GeneralResponse:
+      type: object
+      properties:
+        success:
+          type: number
+          description: returns 1 if successful
+        description:
+          type: string
+          description: a short comment 
+      required:
+        - success
+        - description
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  GetMailsResponse:
+    required:
+      - mails
+    properties:
+      # The array of mails
+      mails:
+        type: array
+        items: 
+          type: object
+          properties:
+            id:
+              type: string
+            subject:
+              type: string
+            receivedOn:
+              type: string
+              format: date-time
+            from:
+              type: string
+            read:
+              type: boolean
+  GetEventResponse:
+    required:
+      - id
+      - subject
+      - start
+      - end
+      - attendees
+    properties:
+      id:
+        type: string
+      subject:
+        type: string
+      start:
+        type: string
+      end:
+        type: string
+      attendees:
+        type: array
+        items: 
+          type: object
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+  GetEventsResponse:
+    required:
+      - events
+    properties:
+      # The array of events
+      events:
+        type: array
+        items: 
+          type: object
+          properties:
+            id:
+              type: string
+            subject:
+              type: string
+            start:
+              type: string
+            end:
+              type: string
+            attendees:
+              type: array
+              items: 
+                type: object
+                properties:
+                  name:
+                    type: string
+                  email:
+                    type: string

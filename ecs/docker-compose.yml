@@ -1,0 +1,12 @@
+version: '2'
+services:
+  swagger-outlook-api:
+    image: komushi/swagger-outlook-api
+    build: .
+    environment:
+      NODE_ENV: development
+    ports:
+      - 10010:10010
+    volumes:
+      - .:/home/app-user/app
+      - /home/app-user/app/node_modules

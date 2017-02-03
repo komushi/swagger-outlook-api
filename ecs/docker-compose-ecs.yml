@@ -1,0 +1,6 @@
+version: '2'
+services:
+  swagger-outlook-api:
+    image: "042083552617.dkr.ecr.ap-northeast-1.amazonaws.com/komushi/swagger-outlook-api:latest"
+    ports:
+      - 10010:10010

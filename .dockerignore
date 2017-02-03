@@ -1,0 +1,6 @@
+node_modules
+npm-debug.log
+ecs
+secret.txt
+docker-compose.yml
+docker-compose-prod.yml
