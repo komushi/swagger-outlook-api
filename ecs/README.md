@@ -77,9 +77,12 @@ $ aws ec2 run-instances --image-id ami-372f5450 --count 2 --instance-type t2.med
 ### 3-1. Tag the image built by Dockerfile
 [Specified image name and tag](/README.md#2-3-login-and-push-to-docker-hub)
 
-docker tag <image_id> <ecr_host>/<repo_name>/swagger-outlook-api
 ```
-$ docker tag ba44e85bb92b 042083552617.dkr.ecr.ap-northeast-1.amazonaws.com/komushi/swagger-outlook-api
+$ docker tag <image_id> <ecr_host>/<repo_name>/swagger-outlook-api
+```
+
+```
+$ docker tag ea298e469cc4 042083552617.dkr.ecr.ap-northeast-1.amazonaws.com/komushi/swagger-outlook-api
 ```
 
 ### 3-2. Get login and then login to ecr
@@ -89,13 +92,19 @@ docker login -u AWS -p AQECA... https://042083552617.dkr.ecr.ap-northeast-1.amaz
 ```
 
 ### 3-3. Create repository
-aws ecr create-repository --repository-name <repo_name>/swagger-outlook-api
+```
+$ aws ecr create-repository --repository-name <repo_name>/swagger-outlook-api
+```
+
 ```
 $ aws ecr create-repository --repository-name komushi/swagger-outlook-api
 ```
 
 ### 3-4. Push image to Amazon ECR
-docker push <image_name>
+```
+$ docker push <image_name>
+```
+
 ```
 $ docker push 042083552617.dkr.ecr.ap-northeast-1.amazonaws.com/komushi/swagger-outlook-api
 ```
@@ -110,7 +119,7 @@ services:
   swagger-outlook-api:
     image: "042083552617.dkr.ecr.ap-northeast-1.amazonaws.com/komushi/swagger-outlook-api:latest"
     ports:
-      - 10010:10010
+      - 10010
 ```
 
 ### 4-2. ecs-cli Login with your AWS account's access key
@@ -153,7 +162,10 @@ $ aws elb register-instances-with-load-balancer --load-balancer-name docker-outl
 ```
 
 ## 6. Test with curl
-curl http://docker-outlook-api-2088626580.ap-northeast-1.elb.amazonaws.com/mail?email=<user>@<org>.onmicrosoft.com
 ```
-curl http://docker-outlook-api-2088626580.ap-northeast-1.elb.amazonaws.com/mail?email=xu@cloudnativeltd.onmicrosoft.com
+$ curl http://docker-outlook-api-2088626580.ap-northeast-1.elb.amazonaws.com/mail?email=<user>@<org>.onmicrosoft.com
+```
+
+```
+$ curl http://docker-outlook-api-2088626580.ap-northeast-1.elb.amazonaws.com/mail?email=xu@cloudnativeltd.onmicrosoft.com
 ```

@@ -3,13 +3,13 @@ var Q = require("q");
 
 const credentials = {
   client: {
-    id: <your_app_id>,
-    secret: '<secret>',
+    id: 'f738ac64-0b60-4eaf-8d46-9fec07e33d3c',
+    secret: 'Lrfvhhjv1q9nUZbeDaVOJUC',
   },
   auth: {
     tokenHost: 'https://login.microsoftonline.com',
-    authorizePath: '<your_tenant>/oauth2/v2.0/authorize',
-    tokenPath: '<your_tenant>/oauth2/v2.0/token'
+    authorizePath: 'cloudnativeltd.onmicrosoft.com/oauth2/v2.0/authorize',
+    tokenPath: 'cloudnativeltd.onmicrosoft.com/oauth2/v2.0/token'
   }
 }
 
@@ -39,7 +39,7 @@ function getToken() {
       });
   }
   else {
-    console.log("return existing token");
+    console.log("return existing token", token);
 
     d.resolve(token);
   }

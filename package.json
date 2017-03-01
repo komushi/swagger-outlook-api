@@ -9,11 +9,11 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.12.3",
-    "swagger-express-mw": "^0.1.0",
+    "ip": "^1.1.4",
     "node-outlook": "^1.1.6",
     "q": "^1.4.1",
-    "simple-oauth2": "^1.0.1"
-
+    "simple-oauth2": "^1.0.1",
+    "swagger-express-mw": "^0.1.0"
   },
   "devDependencies": {
     "should": "^7.1.0",

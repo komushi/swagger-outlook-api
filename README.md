@@ -28,9 +28,13 @@ $ npm start
 ```
 
 ### 1-3. Test with curl
-curl http://localhost:10010/mail?email=xu@cloudnativeltd.onmicrosoft.com
+
 ```
-$ curl http://localhost:10010/mail?email=<your_account>@<your_tenant>
+$ curl -i http://localhost:10010/mail?email=<your_account>@<your_tenant>
+```
+
+```
+$ curl -i http://localhost:10010/mail?email=xu@cloudnativeltd.onmicrosoft.com
 ```
 
 ### 1-4. Test with Swagger UI
@@ -71,7 +75,7 @@ docker build -t <your_username>/swagger-outlook-api .
 $ docker build -t komushi/swagger-outlook-api .
 ...
 ...
-Successfully built ba44e85bb92b
+Successfully built ea298e469cc4
 ```
 
 ### 2-3. Login and push to docker hub
@@ -105,7 +109,7 @@ services:
   environment:
     NODE_ENV: production
     ports:
-      - 10010:10010
+      - 10010
 ```
 
 build image
