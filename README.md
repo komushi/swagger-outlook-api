@@ -75,7 +75,7 @@ docker build -t <your_username>/swagger-outlook-api .
 $ docker build -t komushi/swagger-outlook-api .
 ...
 ...
-Successfully built ea298e469cc4
+Successfully built 27c33eca314f
 ```
 
 ### 2-3. Login and push to docker hub

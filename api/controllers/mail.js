@@ -3,6 +3,7 @@ var Q = require("q");
 var authHelper = require('../helpers/authHelper');
 var outlook = require('node-outlook');
 var ip = require('ip');
+var os = require('os');
 
 var myuser = {};
 
@@ -16,7 +17,8 @@ var getAll = function(req, res, next) {
 			return getAllMails(token);
   	})
 		.then((messages) => {
-			res.setHeader("Host-Address", ip.address());
+      res.setHeader("Container-Address", ip.address());
+      res.setHeader("Host-Name", os.hostname());
 			res.json({ mails: messages});
   	})
     .catch(function (error) {

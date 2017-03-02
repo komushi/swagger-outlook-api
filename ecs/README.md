@@ -82,7 +82,7 @@ $ docker tag <image_id> <ecr_host>/<repo_name>/swagger-outlook-api
 ```
 
 ```
-$ docker tag ea298e469cc4 042083552617.dkr.ecr.ap-northeast-1.amazonaws.com/komushi/swagger-outlook-api
+$ docker tag 27c33eca314f 042083552617.dkr.ecr.ap-northeast-1.amazonaws.com/komushi/swagger-outlook-api
 ```
 
 ### 3-2. Get login and then login to ecr
@@ -129,11 +129,11 @@ $ ecs-cli configure --region ap-northeast-1 --access-key <access_key> --secret-k
 
 ### 4-2. Start the service
 ```
-$ ecs-cli compose --file docker-compose-ecs.yml service up
+$ ecs-cli compose --file ./ecs/docker-compose-ecs.yml service up
 ```
 
 ```
-$ ecs-cli compose --file docker-compose-ecs.yml service scale 2
+$ ecs-cli compose --file ./ecs/docker-compose-ecs.yml service scale 4
 ```
 
 ## 5. Add ELB for container instances
@@ -150,7 +150,7 @@ subnet-0b59ec53 subnet-08a7cb7e
 
 ### 5-2. Create load balancer
 ```
-$ aws elb create-load-balancer --load-balancer-name docker-outlook-api --listeners "Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=10010" --subnet subnet-0b59ec53 subnet-08a7cb7e --security-groups sg-9acfaefd
+$ aws elbv2 create-load-balancer --load-balancer-name alb-docker-outlook-api --listeners "Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=10010" --subnet subnet-0b59ec53 subnet-08a7cb7e --security-groups sg-9acfaefd
 {
     "DNSName": "docker-outlook-api-2088626580.ap-northeast-1.elb.amazonaws.com"
 }
@@ -158,7 +158,7 @@ $ aws elb create-load-balancer --load-balancer-name docker-outlook-api --listene
 
 ### 5-3. Register instances to load blancer 
 ```
-$ aws elb register-instances-with-load-balancer --load-balancer-name docker-outlook-api --instances i-06e28d2ca86a05793 i-087e947884fbe4987
+$ aws elbv2 register-instances-with-load-balancer --load-balancer-name docker-outlook-api --instances i-06e28d2ca86a05793 i-087e947884fbe4987
 ```
 
 ## 6. Test with curl
