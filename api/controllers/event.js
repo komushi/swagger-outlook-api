@@ -17,7 +17,7 @@ var getAll = function(req, res, next) {
 			return getAllEvents(token);
   	})
 		.then((events) => {
-      res.setHeader("Container-Address", ip.address());
+      res.setHeader("Host-Address", ip.address());
       res.setHeader("Host-Name", os.hostname());
 			res.json({ events: events});
   	})

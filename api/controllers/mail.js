@@ -17,7 +17,7 @@ var getAll = function(req, res, next) {
 			return getAllMails(token);
   	})
 		.then((messages) => {
-      res.setHeader("Container-Address", ip.address());
+      res.setHeader("Host-Address", ip.address());
       res.setHeader("Host-Name", os.hostname());
 			res.json({ mails: messages});
   	})

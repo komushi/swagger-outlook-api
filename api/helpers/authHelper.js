@@ -3,13 +3,13 @@ var Q = require("q");
 
 const credentials = {
   client: {
-    id: 'f738ac64-0b60-4eaf-8d46-9fec07e33d3c',
-    secret: 'Lrfvhhjv1q9nUZbeDaVOJUC',
+    id: '<id>',
+    secret: '<secret>',
   },
   auth: {
     tokenHost: 'https://login.microsoftonline.com',
-    authorizePath: 'cloudnativeltd.onmicrosoft.com/oauth2/v2.0/authorize',
-    tokenPath: 'cloudnativeltd.onmicrosoft.com/oauth2/v2.0/token'
+    authorizePath: '<tenant>.onmicrosoft.com/oauth2/v2.0/authorize',
+    tokenPath: '<tenant>.onmicrosoft.com/oauth2/v2.0/token'
   }
 }
 

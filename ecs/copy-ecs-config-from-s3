@@ -1,4 +1,4 @@
 #!/bin/bash
 
 yum install -y aws-cli
-aws s3 cp s3://demo-docker-cluster/ecs.config /etc/ecs/ecs.config
+aws s3 cp s3://ecs-cluster-demo/ecs.config /etc/ecs/ecs.config
